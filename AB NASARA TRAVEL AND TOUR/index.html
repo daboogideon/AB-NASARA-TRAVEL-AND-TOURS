@@ -1,0 +1,717 @@
+cat > /mnt/user-data/outputs/ab-nasara.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB NASARA Travel and Tour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;0,900;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1C33;
+    --ink-soft:#16274A;
+    --gold:#E8A93B;
+    --coral:#E8593F;
+    --forest:#1F4B3F;
+    --cream:#FBF6EC;
+    --sand:#F1E4C9;
+    --line:rgba(251,246,236,0.16);
+    --line-dark:rgba(15,28,51,0.10);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.55;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-0.01em;margin:0;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .stripe{height:8px;background:repeating-linear-gradient(90deg,var(--gold) 0 40px,var(--coral) 40px 80px,var(--forest) 80px 120px,var(--ink) 120px 160px);}
+
+  /* ══════════════════════════════
+     LOGO
+  ══════════════════════════════ */
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
+
+  .logo-mark{position:relative;width:44px;height:44px;flex-shrink:0;}
+
+  /* Static circle base */
+  .logo-mark svg{display:block;}
+
+  /* Plane trail dash — subtle animated streak */
+  .trail-dash{
+    stroke-dasharray:28 200;
+    stroke-dashoffset:0;
+    animation:trail-move 3.6s ease-in-out infinite;
+  }
+  @keyframes trail-move{
+    0%  {stroke-dashoffset:0;   opacity:0.7;}
+    50% {stroke-dashoffset:-80; opacity:1;}
+    100%{stroke-dashoffset:-160;opacity:0;}
+  }
+
+  /* Plane rock — gentle tilt */
+  .plane-g{
+    transform-origin:22px 22px;
+    animation:plane-rock 3.6s ease-in-out infinite;
+  }
+  @keyframes plane-rock{
+    0%,100%{transform:rotate(-3deg) translateY(0);}
+    50%    {transform:rotate(3deg)  translateY(-1.5px);}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .trail-dash,.plane-g{animation:none;}
+  }
+
+  .brand-text{display:flex;flex-direction:column;line-height:1.1;}
+  .brand-name{font-family:'Fraunces',serif;font-weight:900;font-size:1.12rem;letter-spacing:0.03em;color:var(--cream);}
+  .brand-name .ab{color:var(--gold);}
+  .brand-sub{font-family:'Inter',sans-serif;font-weight:600;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(251,246,236,0.55);margin-top:2px;}
+
+  /* ══════════════════════════════
+     NAV
+  ══════════════════════════════ */
+  header.nav{background:var(--ink);color:var(--cream);position:sticky;top:0;z-index:50;}
+  .nav-inner{max-width:1180px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  nav.links{display:flex;gap:26px;font-size:0.9rem;font-weight:600;}
+  nav.links a{opacity:0.8;transition:opacity .2s,color .2s;}
+  nav.links a:hover{opacity:1;color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--ink);padding:9px 20px;border-radius:999px;font-weight:700;font-size:0.88rem;white-space:nowrap;transition:opacity .15s;}
+  .nav-cta:hover{opacity:0.88;}
+  @media(max-width:760px){nav.links{display:none;}}
+
+  /* ══════════════════════════════
+     HERO
+  ══════════════════════════════ */
+  .hero{background:radial-gradient(1200px 600px at 15% -10%,#1c3155 0%,var(--ink) 55%);color:var(--cream);padding:86px 0 64px;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:52px;align-items:center;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-weight:700;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;}
+  .eyebrow::before{content:"";width:20px;height:2px;background:var(--gold);display:inline-block;}
+  h1.headline{font-size:clamp(2.2rem,4.4vw,3.5rem);line-height:1.06;min-height:2.1em;}
+  h1.headline .accent{color:var(--gold);font-style:italic;}
+  .sub{margin-top:18px;font-size:1.05rem;color:rgba(251,246,236,0.8);max-width:500px;}
+  .hero-cta-row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
+  .btn-primary{background:var(--coral);color:var(--cream);border:none;padding:14px 26px;border-radius:10px;font-weight:700;font-size:0.96rem;cursor:pointer;display:inline-block;box-shadow:0 10px 24px rgba(232,89,63,0.35);transition:transform .15s;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--cream);border:1.5px solid var(--line);padding:13px 24px;border-radius:10px;font-weight:600;font-size:0.96rem;cursor:pointer;display:inline-block;}
+  .headline-dots{display:flex;gap:8px;margin-top:22px;}
+  .headline-dots span{width:7px;height:7px;border-radius:50%;background:var(--line);cursor:pointer;transition:background .2s;}
+  .headline-dots span.active{background:var(--gold);}
+
+  /* Route map card */
+  .route-card{background:rgba(251,246,236,0.05);border:1px solid var(--line);border-radius:18px;padding:24px 20px 18px;}
+  .route-card svg{width:100%;height:auto;display:block;}
+  .route-caption{display:flex;justify-content:space-between;margin-top:12px;font-size:0.76rem;color:rgba(251,246,236,0.6);font-weight:600;letter-spacing:0.02em;}
+  .moving-dot{animation:travel 5s linear infinite;}
+  @keyframes travel{0%{offset-distance:0%}100%{offset-distance:100%}}
+  @media(prefers-reduced-motion:reduce){.moving-dot{animation:none;}}
+
+  /* ══════════════════════════════
+     BLOG / OPPORTUNITIES
+  ══════════════════════════════ */
+  .blog-section{padding:80px 0;background:var(--cream);}
+  .blog-section .sec-head{max-width:640px;margin-bottom:48px;}
+  .sec-eyebrow{color:var(--coral);font-weight:800;font-size:0.76rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
+  .sec-title{font-size:clamp(1.7rem,3vw,2.4rem);}
+  .sec-desc{margin-top:12px;color:#3b4a63;font-size:1rem;}
+
+  /* Blog grid */
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  @media(max-width:960px){.blog-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.blog-grid{grid-template-columns:1fr;}}
+
+  .blog-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(15,28,51,0.07);border:1px solid rgba(15,28,51,0.05);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;}
+  .blog-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(15,28,51,0.12);}
+
+  .blog-img{width:100%;height:180px;object-fit:cover;display:block;background:var(--sand);}
+  .blog-img-placeholder{width:100%;height:180px;background:linear-gradient(135deg,var(--sand),#e2d4b5);display:flex;align-items:center;justify-content:center;font-size:2.2rem;}
+
+  .blog-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .blog-tag{display:inline-flex;align-items:center;gap:6px;background:var(--sand);color:var(--forest);font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;width:fit-content;}
+  .blog-title{font-family:'Fraunces',serif;font-weight:700;font-size:1.08rem;color:var(--ink);line-height:1.3;}
+  .blog-meta{font-size:0.76rem;color:#7a8ba6;font-weight:600;}
+  .blog-excerpt{font-size:0.88rem;color:#3b4a63;line-height:1.5;flex:1;}
+  .blog-read{margin-top:auto;color:var(--coral);font-weight:700;font-size:0.85rem;display:inline-flex;align-items:center;gap:5px;}
+  .blog-read:hover{gap:8px;}
+
+  /* Empty state */
+  .blog-empty{text-align:center;padding:60px 20px;color:#7a8ba6;font-size:1rem;}
+  .blog-empty strong{display:block;font-family:'Fraunces',serif;font-size:1.3rem;color:var(--ink);margin-bottom:8px;}
+
+  /* ── ADMIN PANEL ── */
+  .admin-toggle-wrap{text-align:right;margin-bottom:28px;}
+  .admin-toggle-btn{background:var(--ink);color:var(--cream);border:none;padding:9px 18px;border-radius:8px;font-size:0.84rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:7px;}
+
+  .admin-panel{background:#fff;border:1.5px solid var(--line-dark);border-radius:16px;padding:30px 28px;margin-bottom:44px;display:none;}
+  .admin-panel.open{display:block;}
+  .admin-panel h3{font-family:'Fraunces',serif;font-size:1.2rem;margin-bottom:22px;color:var(--ink);}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  @media(max-width:600px){.field-row{grid-template-columns:1fr;}}
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field label{font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#5a6a82;}
+  .field input,.field textarea,.field select{border:1.5px solid rgba(15,28,51,0.15);border-radius:8px;padding:10px 13px;font-size:0.9rem;font-family:'Inter',sans-serif;color:var(--ink);outline:none;transition:border-color .2s;background:var(--cream);}
+  .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--coral);}
+  .field textarea{resize:vertical;min-height:90px;}
+  .field.full{grid-column:1/-1;}
+  .admin-actions{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;}
+  .btn-post{background:var(--forest);color:var(--cream);border:none;padding:12px 24px;border-radius:8px;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:'Inter',sans-serif;}
+  .btn-post:hover{opacity:0.88;}
+  .btn-cancel{background:transparent;color:#5a6a82;border:1.5px solid rgba(15,28,51,0.15);padding:11px 22px;border-radius:8px;font-weight:600;font-size:0.9rem;cursor:pointer;font-family:'Inter',sans-serif;}
+
+  /* Post modal / detail */
+  .modal-overlay{position:fixed;inset:0;background:rgba(15,28,51,0.55);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.open{display:flex;}
+  .modal-box{background:#fff;border-radius:18px;max-width:660px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 60px rgba(15,28,51,0.3);}
+  .modal-img{width:100%;height:240px;object-fit:cover;display:block;border-radius:18px 18px 0 0;background:var(--sand);}
+  .modal-img-placeholder{width:100%;height:240px;background:linear-gradient(135deg,var(--sand),#e2d4b5);display:flex;align-items:center;justify-content:center;font-size:3.5rem;border-radius:18px 18px 0 0;}
+  .modal-content{padding:28px 30px 32px;}
+  .modal-content h2{font-size:1.5rem;margin-bottom:8px;line-height:1.25;}
+  .modal-meta{font-size:0.8rem;color:#7a8ba6;font-weight:600;margin-bottom:18px;}
+  .modal-body{font-size:0.97rem;color:#2a3550;line-height:1.65;white-space:pre-wrap;}
+  .modal-close{position:sticky;top:14px;float:right;background:var(--ink);color:var(--cream);border:none;border-radius:999px;width:34px;height:34px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-left:14px;}
+
+  /* Delete btn on card (admin only) */
+  .card-admin-bar{display:none;gap:8px;padding:10px 20px;border-top:1px solid var(--line-dark);background:#fafafa;}
+  .admin-mode .card-admin-bar{display:flex;}
+  .btn-delete{background:none;border:1px solid #e8593f55;color:var(--coral);padding:5px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;}
+  .btn-delete:hover{background:#fff0ee;}
+
+  /* ══════════════════════════════
+     ABOUT
+  ══════════════════════════════ */
+  .about{background:var(--forest);color:var(--cream);padding:80px 0;}
+  .about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:52px;align-items:center;}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr;}}
+  .about-badge{font-family:'Fraunces',serif;font-weight:900;font-size:5.2rem;color:var(--gold);opacity:0.9;line-height:1;}
+  .about-badge-label{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.14em;color:rgba(251,246,236,0.65);margin-top:6px;font-weight:700;}
+  .about p{color:rgba(251,246,236,0.85);font-size:1.02rem;margin-top:0;}
+  .about p+p{margin-top:14px;}
+  .about-title{color:var(--cream);font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:16px;}
+
+  /* ══════════════════════════════
+     FAQ
+  ══════════════════════════════ */
+  .faq{background:var(--cream);padding:80px 0;}
+  .faq-item{border-bottom:1px solid rgba(15,28,51,0.12);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;padding:19px 0;display:flex;justify-content:space-between;align-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--ink);cursor:pointer;gap:20px;}
+  .faq-q .icon{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--coral);color:var(--coral);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:transform .2s;}
+  .faq-item.open .icon{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-a p{margin:0 0 18px;color:#3b4a63;font-size:0.96rem;max-width:740px;}
+
+  /* ══════════════════════════════
+     CTA BAND
+  ══════════════════════════════ */
+  .cta-band{background:linear-gradient(120deg,var(--ink),#1c3155);color:var(--cream);text-align:center;padding:68px 0;}
+  .cta-band h2{font-size:clamp(1.55rem,3vw,2.1rem);}
+  .cta-band p{color:rgba(251,246,236,0.75);margin-top:10px;font-size:1.02rem;}
+  .cta-band .btn-primary{margin-top:24px;}
+
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
+  footer{background:var(--ink);color:rgba(251,246,236,0.55);padding:34px 0;font-size:0.83rem;}
+  .footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center;}
+  .footer-brand{display:flex;align-items:center;gap:9px;}
+
+  /* ══════════════════════════════
+     CHAT WIDGET
+  ══════════════════════════════ */
+  #chat-launcher{position:fixed;bottom:24px;right:24px;z-index:100;background:var(--coral);color:var(--cream);border:none;border-radius:999px;padding:14px 20px;font-weight:700;font-size:0.9rem;cursor:pointer;box-shadow:0 12px 28px rgba(232,89,63,0.4);display:flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;}
+  #chat-panel{position:fixed;bottom:24px;right:24px;z-index:110;width:355px;max-width:calc(100vw - 32px);height:510px;max-height:calc(100vh - 48px);background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(15,28,51,0.35);display:none;flex-direction:column;overflow:hidden;font-family:'Inter',sans-serif;}
+  #chat-panel.open{display:flex;}
+  .chat-head{background:var(--ink);color:var(--cream);padding:15px 17px;display:flex;align-items:center;justify-content:space-between;}
+  .chat-head-title{display:flex;align-items:center;gap:9px;font-weight:700;font-size:0.92rem;}
+  .chat-head-title .dot{width:8px;height:8px;background:#4ade80;border-radius:50%;}
+  .chat-close{background:none;border:none;color:var(--cream);font-size:1.2rem;cursor:pointer;opacity:0.7;}
+  .chat-close:hover{opacity:1;}
+  #chat-messages{flex:1;overflow-y:auto;padding:15px;display:flex;flex-direction:column;gap:11px;background:var(--cream);}
+  .msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:0.88rem;line-height:1.45;}
+  .msg.bot{background:#fff;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(15,28,51,0.08);}
+  .msg.user{background:var(--coral);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+  .msg.typing{color:#8a93a6;font-style:italic;}
+  .chat-input-row{display:flex;gap:8px;padding:11px;border-top:1px solid rgba(15,28,51,0.08);background:#fff;}
+  .chat-input-row input{flex:1;border:1px solid rgba(15,28,51,0.15);border-radius:999px;padding:9px 15px;font-size:0.88rem;font-family:'Inter',sans-serif;outline:none;}
+  .chat-input-row input:focus{border-color:var(--coral);}
+  .chat-send{background:var(--ink);color:#fff;border:none;border-radius:999px;width:38px;height:38px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+
+    <!-- ══ LOGO ══ -->
+    <a href="#" class="brand">
+      <div class="logo-mark">
+        <svg viewBox="0 0 44 44" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+          <!-- Circle backdrop -->
+          <circle cx="22" cy="22" r="21" fill="#16274A" stroke="#E8A93B" stroke-width="1.3"/>
+
+          <!-- Dashed arc trail behind plane -->
+          <path class="trail-dash"
+            d="M8,32 Q16,10 36,10"
+            fill="none" stroke="#E8A93B" stroke-width="1.4"
+            stroke-linecap="round" stroke-dasharray="28 200"/>
+
+          <!-- Plane group – rocks gently -->
+          <g class="plane-g">
+            <!-- Plane body -->
+            <path d="M34,11 L20,18 L12,16 L14,19 L20,20 L16,26 L19,26 L25,21 L30,23 L28,26 L31,25 L36,14 Z"
+              fill="#FBF6EC"/>
+            <!-- Wing highlight -->
+            <path d="M25,17 L20,18 L20,20 L26,19 Z" fill="#E8A93B" opacity="0.7"/>
+          </g>
+
+          <!-- AB text lower-left -->
+          <text x="9" y="38" font-family="'Fraunces',serif" font-weight="900"
+            font-size="10" fill="#E8A93B" letter-spacing="0.5">AB</text>
+        </svg>
+      </div>
+
+      <div class="brand-text">
+        <span class="brand-name"><span class="ab">AB</span> NASARA</span>
+        <span class="brand-sub">Travel &amp; Tour</span>
+      </div>
+    </a>
+
+    <nav class="links">
+      <a href="#opportunities">Opportunities</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#opportunities" class="nav-cta">View Opportunities</a>
+  </div>
+</header>
+<div class="stripe"></div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Accra · Dubai · Mecca · Europe  and beyond</span>
+      <h1 class="headline" id="headline">Your Next <span class="accent">Journey</span> Starts Here</h1>
+      <div class="headline-dots" id="headline-dots">
+        <span class="active" data-i="0"></span><span data-i="1"></span><span data-i="2"></span>
+      </div>
+      <p class="sub">From visa paperwork to the last mile of your itinerary, AB NASARA handles every detail — flights, stays, documentation, and everything between — so all you have to do is pack.</p>
+      <div class="hero-cta-row">
+        <a href="#opportunities" class="btn-primary">See Open Opportunities →</a>
+        <a href="#about" class="btn-ghost">About Us</a>
+      </div>
+    </div>
+
+    <div class="route-card">
+      <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="routePath" d="M40,210 C110,120 150,190 210,110 C270,30 330,90 380,40" fill="none"/>
+        </defs>
+        <path d="M40,210 C110,120 150,190 210,110 C270,30 330,90 380,40"
+          fill="none" stroke="rgba(251,246,236,0.22)" stroke-width="2" stroke-dasharray="6 8"/>
+        <circle cx="40"  cy="210" r="6" fill="#E8A93B"/>
+        <text x="18"  y="234" fill="#FBF6EC" font-size="12" font-family="Inter" font-weight="600">Accra</text>
+        <circle cx="210" cy="110" r="6" fill="#E8593F"/>
+        <text x="188" y="95"  fill="#FBF6EC" font-size="12" font-family="Inter" font-weight="600">Europe</text>
+        <circle cx="380" cy="40"  r="6" fill="#1F4B3F" stroke="#FBF6EC" stroke-width="1.5"/>
+        <text x="332" y="26"  fill="#FBF6EC" font-size="12" font-family="Inter" font-weight="600">Dubai</text>
+        <g class="moving-dot" style="offset-path:path('M40,210 C110,120 150,190 210,110 C270,30 330,90 380,40');">
+          <circle r="5" fill="#FBF6EC"/>
+        </g>
+      </svg>
+      <div class="route-caption">
+        <span>12,000+ travelers guided</span>
+        <span>34 destinations and beyond</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ OPPORTUNITIES BLOG ══════════ -->
+<section class="blog-section" id="opportunities">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Latest Opportunities</span>
+      <h2 class="sec-title">Open travel &amp; work opportunities</h2>
+      <p class="sec-desc">We post the latest Gulf work placements, travel deals, and Umrah packages here as soon as they're available. Check back often.</p>
+    </div>
+
+    <!-- Admin toggle (owner only) -->
+    <div class="admin-toggle-wrap">
+      <button class="admin-toggle-btn" onclick="toggleAdmin()">
+        <span id="admin-icon">🔒</span> <span id="admin-label">Owner Login</span>
+      </button>
+    </div>
+
+    <!-- Login prompt -->
+    <div id="login-box" style="display:none;background:#fff;border:1.5px solid var(--line-dark);border-radius:14px;padding:28px;max-width:360px;margin:0 auto 36px;">
+      <h3 style="font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:16px;">Owner Access</h3>
+      <div class="field" style="margin-bottom:14px;">
+        <label>Password</label>
+        <input type="password" id="admin-pass" placeholder="Enter owner password" onkeydown="if(event.key==='Enter')checkPass();">
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn-post" onclick="checkPass()">Unlock</button>
+        <button class="btn-cancel" onclick="closeLogin()">Cancel</button>
+      </div>
+      <p id="pass-err" style="color:var(--coral);font-size:0.82rem;margin-top:10px;display:none;">Incorrect password.</p>
+    </div>
+
+    <!-- Admin post form -->
+    <div class="admin-panel" id="admin-panel">
+      <h3>✏️ Post New Opportunity</h3>
+      <div class="field-row">
+        <div class="field">
+          <label>Title</label>
+          <input type="text" id="post-title" placeholder="e.g. Hotel Staff Needed – Dubai">
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <select id="post-tag">
+            <option value="Gulf Work">Gulf Work</option>
+            <option value="Umrah">Umrah</option>
+            <option value="Travel Deal">Travel Deal</option>
+            <option value="Visa Info">Visa Info</option>
+            <option value="Announcement">Announcement</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Location / Destination</label>
+          <input type="text" id="post-location" placeholder="e.g. Dubai, UAE">
+        </div>
+        <div class="field">
+          <label>Image URL (optional)</label>
+          <input type="text" id="post-img" placeholder="https://…">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field full">
+          <label>Full Details</label>
+          <textarea id="post-body" placeholder="Describe the opportunity, requirements, salary, deadline, how to apply…"></textarea>
+        </div>
+      </div>
+      <div class="admin-actions">
+        <button class="btn-post" onclick="publishPost()">Publish Post</button>
+        <button class="btn-cancel" onclick="cancelAdmin()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Blog grid -->
+    <div class="blog-grid admin-mode" id="blog-grid"></div>
+    <div id="blog-empty" class="blog-empty" style="display:none;">
+      <strong>No opportunities posted yet.</strong>
+      Check back soon — we post new Gulf work placements, travel deals, and Umrah packages as they come in.
+    </div>
+  </div>
+</section>
+
+<!-- Post detail modal -->
+<div class="modal-overlay" id="post-modal" onclick="closeModal(event)">
+  <div class="modal-box" id="modal-box">
+    <div id="modal-img-wrap"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-tag" style="margin-bottom:12px;"></div>
+      <h2 id="modal-title"></h2>
+      <p class="modal-meta" id="modal-meta"></p>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<div class="stripe"></div>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="about-badge">10+</div>
+      <div class="about-badge-label">Years planning journeys</div>
+    </div>
+    <div>
+      <h2 class="about-title">About AB NASARA</h2>
+      <p>AB NASARA Travel and Tour exists to make travel feel possible — not overwhelming. We handle the parts of a trip that usually cause the most stress: visa applications, flight logistics, accommodation, and the small details that hold an itinerary together.</p>
+      <p>Whether you're a first-time traveler, a family planning a heritage trip, a pilgrim preparing for Umrah, or a worker seeking verified Gulf opportunities — we build the journey around you. We believe authentic travel shouldn't be reserved for those who can navigate the paperwork alone. That's the job we do, so you don't have to.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head" style="max-width:640px;margin-bottom:40px;">
+      <span class="sec-eyebrow">Good to know</span>
+      <h2 class="sec-title">Frequently asked questions</h2>
+    </div>
+    <div id="faq-list"></div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Ready when you are.</h2>
+    <p>Tell us where you're headed — we'll take it from there.</p>
+    <a href="#opportunities" class="btn-primary">View Opportunities →</a>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <svg viewBox="0 0 32 32" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="15" fill="#16274A" stroke="#E8A93B" stroke-width="1.1"/>
+        <path d="M25,8 L15,13 L9,12 L10,14 L15,15 L12,19 L14,19 L18,16 L22,17 L21,19 L23,18 L27,10 Z" fill="#FBF6EC" opacity="0.9"/>
+        <text x="5" y="29" font-family="'Fraunces',serif" font-weight="900" font-size="7" fill="#E8A93B">AB</text>
+      </svg>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:0.88rem;color:rgba(251,246,236,0.8);"><span style="color:#E8A93B;">AB</span> NASARA</div>
+        <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(251,246,236,0.38);">Travel &amp; Tour</div>
+      </div>
+    </div>
+    <span>© 2026 AB NASARA Travel and Tour. All rights reserved.</span>
+    <span>Accra, Ghana</span>
+  </div>
+</footer>
+
+<!-- ══════════ CHAT ══════════ -->
+<button id="chat-launcher" onclick="toggleChat(true)">💬 Ask AB NASARA</button>
+<div id="chat-panel">
+  <div class="chat-head">
+    <div class="chat-head-title"><span class="dot"></span> AB NASARA Assistant</div>
+    <button class="chat-close" onclick="toggleChat(false)">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Ask about opportunities…" onkeydown="if(event.key==='Enter')sendMessage();">
+    <button class="chat-send" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+/* ─── HEADLINES ─── */
+const headlines = [
+  'Your Next <span class="accent">Journey</span> Starts Here',
+  'Gulf Opportunities, <span class="accent">Handled</span>.',
+  'Travel Far. <span class="accent">Worry</span> Less.'
+];
+let hIdx = 0;
+const headlineEl = document.getElementById('headline');
+const dots = document.querySelectorAll('#headline-dots span');
+function setHeadline(i){ hIdx=i; headlineEl.innerHTML=headlines[i]; dots.forEach((d,j)=>d.classList.toggle('active',j===i)); }
+dots.forEach(d=>d.addEventListener('click',()=>setHeadline(parseInt(d.dataset.i))));
+setInterval(()=>setHeadline((hIdx+1)%headlines.length),4500);
+
+/* ─── BLOG / OPPORTUNITIES ─── */
+// Sample seed posts so the page isn't empty on first load
+let posts = JSON.parse(localStorage.getItem('ab_posts') || 'null') || [
+  {
+    id: Date.now()-3000,
+    title: "Hotel & Hospitality Staff — Dubai, UAE",
+    tag: "Gulf Work",
+    location: "Dubai, UAE",
+    date: "Aug 2026",
+    img: "",
+    emoji: "🏨",
+    body: "We are currently recruiting for 5-star hotel positions in Dubai.\n\nRoles available:\n• Front Desk Officers\n• Housekeeping Supervisors\n• F&B Attendants\n• Kitchen Staff\n\nRequirements:\n• Valid Ghana passport (min. 2 years validity)\n• Previous hospitality experience preferred\n• Age 22 – 40\n\nBenefits: Competitive tax-free salary, free accommodation, free meals, annual air ticket home, medical cover.\n\nDeadline: 15 September 2026. Contact AB NASARA to apply."
+  },
+  {
+    id: Date.now()-2000,
+    title: "Umrah Package — October 2026",
+    tag: "Umrah",
+    location: "Mecca & Medina, Saudi Arabia",
+    date: "Aug 2026",
+    img: "",
+    emoji: "🕌",
+    body: "Join our guided group Umrah trip departing from Accra (KIA) in October 2026.\n\nPackage includes:\n• Return flights Accra ↔ Jeddah\n• 14-night accommodation (7 nights Mecca, 7 nights Medina)\n• Umrah visa processing\n• Ziyarat spiritual site tours\n• Ihram kit, daily meals, ground transport\n• Experienced group leader & spiritual guide\n\nSpaces are limited to 40 pilgrims. A deposit secures your spot.\n\nFor pricing and to register, WhatsApp or call the AB NASARA office directly."
+  },
+  {
+    id: Date.now()-1000,
+    title: "General Labour & Drivers — Riyadh, KSA",
+    tag: "Gulf Work",
+    location: "Riyadh, Saudi Arabia",
+    date: "Aug 2026",
+    img: "",
+    emoji: "🚧",
+    body: "Urgent recruitment: General Labour and Heavy Vehicle Drivers for construction projects in Riyadh.\n\nPositions: 20 vacancies\nContract: 2 years (renewable)\nSalary: SAR 1,200 – 1,800/month + overtime\nAccommodation: Provided by employer\n\nRequirements:\n• Valid passport\n• Drivers: valid DL class C or above\n• Medical fitness certificate\n• Age: 25 – 45\n\nDocumentation support and visa processing handled entirely by AB NASARA.\n\nApply in person at our Accra office or send your CV via WhatsApp."
+  }
+];
+
+let isAdmin = false;
+let showingLogin = false;
+const OWNER_PASS = "abnasara2026"; // owner sets this
+
+function savePosts(){ localStorage.setItem('ab_posts', JSON.stringify(posts)); }
+
+function renderPosts(){
+  const grid = document.getElementById('blog-grid');
+  const empty = document.getElementById('blog-empty');
+  if(!posts.length){ grid.style.display='none'; empty.style.display='block'; return; }
+  grid.style.display='grid'; empty.style.display='none';
+  grid.innerHTML = posts.slice().reverse().map(p=>`
+    <div class="blog-card" id="card-${p.id}">
+      ${p.img
+        ? `<img class="blog-img" src="${p.img}" alt="${p.title}" onerror="this.style.display='none'">`
+        : `<div class="blog-img-placeholder">${p.emoji||'✈️'}</div>`}
+      <div class="blog-body">
+        <span class="blog-tag">${p.tag}</span>
+        <div class="blog-title">${p.title}</div>
+        <div class="blog-meta">${p.location ? '📍 '+p.location+' · ' : ''}${p.date}</div>
+        <div class="blog-excerpt">${p.body.slice(0,120).trim()}…</div>
+        <span class="blog-read" onclick="openModal(${p.id})">Read more →</span>
+      </div>
+      <div class="card-admin-bar">
+        <button class="btn-delete" onclick="deletePost(${p.id})">Delete post</button>
+      </div>
+    </div>
+  `).join('');
+  // toggle admin-mode class on grid
+  if(isAdmin) grid.classList.add('admin-mode');
+  else grid.classList.remove('admin-mode');
+}
+
+function toggleAdmin(){
+  if(isAdmin){ logOut(); return; }
+  showingLogin = !showingLogin;
+  document.getElementById('login-box').style.display = showingLogin ? 'block' : 'none';
+  document.getElementById('admin-label').textContent = showingLogin ? 'Cancel' : 'Owner Login';
+  document.getElementById('admin-icon').textContent = showingLogin ? '✕' : '🔒';
+}
+function closeLogin(){
+  showingLogin = false;
+  document.getElementById('login-box').style.display='none';
+  document.getElementById('admin-label').textContent='Owner Login';
+  document.getElementById('admin-icon').textContent='🔒';
+}
+function checkPass(){
+  const v = document.getElementById('admin-pass').value;
+  if(v === OWNER_PASS){
+    isAdmin = true;
+    closeLogin();
+    document.getElementById('admin-panel').classList.add('open');
+    document.getElementById('admin-label').textContent='Log Out';
+    document.getElementById('admin-icon').textContent='✅';
+    renderPosts();
+  } else {
+    document.getElementById('pass-err').style.display='block';
+  }
+}
+function logOut(){
+  isAdmin = false;
+  document.getElementById('admin-panel').classList.remove('open');
+  document.getElementById('admin-label').textContent='Owner Login';
+  document.getElementById('admin-icon').textContent='🔒';
+  renderPosts();
+}
+function cancelAdmin(){ document.getElementById('admin-panel').classList.remove('open'); }
+
+function publishPost(){
+  const title = document.getElementById('post-title').value.trim();
+  const body  = document.getElementById('post-body').value.trim();
+  if(!title || !body){ alert('Please fill in a title and details.'); return; }
+  const emojis = {'Gulf Work':'💼','Umrah':'🕌','Travel Deal':'✈️','Visa Info':'🛂','Announcement':'📢'};
+  const tag = document.getElementById('post-tag').value;
+  posts.push({
+    id: Date.now(),
+    title,
+    tag,
+    location: document.getElementById('post-location').value.trim(),
+    date: new Date().toLocaleDateString('en-GB',{month:'short',year:'numeric'}),
+    img: document.getElementById('post-img').value.trim(),
+    emoji: emojis[tag]||'✈️',
+    body
+  });
+  savePosts();
+  // clear form
+  ['post-title','post-location','post-img','post-body'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('post-tag').selectedIndex=0;
+  document.getElementById('admin-panel').classList.remove('open');
+  renderPosts();
+}
+
+function deletePost(id){
+  if(!confirm('Delete this post?')) return;
+  posts = posts.filter(p=>p.id!==id);
+  savePosts();
+  renderPosts();
+}
+
+/* ─── MODAL ─── */
+function openModal(id){
+  const p = posts.find(x=>x.id===id);
+  if(!p) return;
+  const wrap = document.getElementById('modal-img-wrap');
+  wrap.innerHTML = p.img
+    ? `<img class="modal-img" src="${p.img}" alt="${p.title}" onerror="this.style.display='none'">`
+    : `<div class="modal-img-placeholder">${p.emoji||'✈️'}</div>`;
+  document.getElementById('modal-tag').innerHTML = `<span class="blog-tag">${p.tag}</span>`;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-meta').textContent = (p.location?'📍 '+p.location+' · ':'')+p.date;
+  document.getElementById('modal-body').textContent = p.body;
+  document.getElementById('post-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e && e.target !== document.getElementById('post-modal') && e.type==='click') return;
+  document.getElementById('post-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+/* ─── FAQ ─── */
+const faqs = [
+  {q:"How do I apply for a Gulf work opportunity?",a:"Contact AB NASARA directly via WhatsApp or visit our Accra office. We'll guide you through the document checklist, process your visa, and keep you updated every step of the way."},
+  {q:"Do you guarantee job placement?",a:"We don't promise guaranteed placement — no legitimate agency does. What we guarantee is honest, fully documented recruitment support through official government channels only."},
+  {q:"What documents do I need to apply?",a:"A valid Ghana passport (minimum 2 years validity), a recent passport photo, your CV, and any relevant certificates. Specific roles may require additional documents — we'll tell you exactly what's needed."},
+  {q:"Can I pay processing fees in installments?",a:"Yes. We offer flexible payment plans on most packages so you can spread costs over the lead-up to your departure rather than paying everything at once."},
+  {q:"How far in advance should I apply?",a:"For Gulf work visas, allow at least 6–8 weeks. Umrah packages fill up quickly before Ramadan and Hajj season — we recommend booking 3–4 months ahead for those."},
+  {q:"Are group discounts available for Umrah?",a:"Yes — groups of 10 or more pilgrims travelling together qualify for a group rate. Speak to our team for a customised group quote."}
+];
+const faqList = document.getElementById('faq-list');
+faqs.forEach((item,i)=>{
+  const div=document.createElement('div'); div.className='faq-item';
+  div.innerHTML=`<button class="faq-q" onclick="toggleFaq(${i})">${item.q}<span class="icon">+</span></button><div class="faq-a" id="faq-a-${i}"><p>${item.a}</p></div>`;
+  faqList.appendChild(div);
+});
+function toggleFaq(i){
+  const el=document.getElementById('faq-a-'+i);
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f=>{f.classList.remove('open');f.querySelector('.faq-a').style.maxHeight=null;});
+  if(!isOpen){item.classList.add('open');el.style.maxHeight=el.scrollHeight+'px';}
+}
+
+/* ─── CHAT ─── */
+const CHAT_SYSTEM_PROMPT=`You are the official AI Virtual Travel Assistant for AB NASARA Travel and Tour, based in Accra, Ghana. Help visitors understand posted Gulf work opportunities, Umrah packages, and travel services. Ask about their interests and guide them to contact the AB NASARA team. Keep replies short and warm (2–4 sentences).`;
+let chatHistory=[], chatOpened=false;
+function toggleChat(open){
+  document.getElementById('chat-panel').classList.toggle('open',open);
+  if(open&&!chatOpened){chatOpened=true;addMessage('bot',"Akwaaba! 👋 I'm the AB NASARA assistant. Are you looking for Gulf work opportunities, an Umrah package, or general travel help?");}
+}
+function addMessage(role,text){
+  const box=document.getElementById('chat-messages');
+  const div=document.createElement('div'); div.className='msg '+(role==='user'?'user':'bot');
+  div.textContent=text; box.appendChild(div); box.scrollTop=box.scrollHeight; return div;
+}
+async function sendMessage(){
+  const input=document.getElementById('chat-input');
+  const text=input.value.trim(); if(!text)return;
+  input.value=''; addMessage('user',text); chatHistory.push({role:'user',content:text});
+  const t=addMessage('bot','Typing…'); t.classList.add('typing');
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:CHAT_SYSTEM_PROMPT,messages:chatHistory})});
+    const data=await res.json();
+    const reply=(data.content||[]).map(b=>b.type==='text'?b.text:'').filter(Boolean).join('\n')||"Sorry, could you try again?";
+    t.remove(); addMessage('bot',reply); chatHistory.push({role:'assistant',content:reply});
+  }catch(err){ t.remove(); addMessage('bot',"Connection issue — please try again or reach our team directly."); }
+}
+
+/* ─── INIT ─── */
+renderPosts();
+</script>
+</body>
+</html>
+HTMLEOF
+echo "Done"
